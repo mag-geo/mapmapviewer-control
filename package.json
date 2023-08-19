@@ -1,0 +1,35 @@
+{
+  "name": "mapmapviewer-control",
+  "version": "0.1.0",
+  "license": "MIT",
+  "homepage": "https://mag-geo.github.io/mapmapviewer-control/",
+  "repository": "https://github.com/mag-geo/mapmapviewer-control",
+  "files": [
+    "dist"
+  ],
+  "module": "./dist/mapmapviewer-control.js",
+  "types": "./src/vite-env.d.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm dev:demo",
+    "dev:demo": "vite",
+    "dev:lib": "vite --config vite.lib.config.ts",
+    "build": "pnpm build:lib && pnpm build:demo",
+    "build:demo": "svelte-check && vite build",
+    "build:lib": "svelte-check --tsconfig ./tsconfig.lib.json && vite build --config vite.lib.config.ts",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^2.4.5",
+    "@tsconfig/svelte": "^5.0.0",
+    "sass": "^1.66.1",
+    "svelte": "^4.2.0",
+    "svelte-check": "^3.5.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5"
+  },
+  "dependencies": {
+    "maplibre-gl": "^3.3.0"
+  }
+}

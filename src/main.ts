@@ -2,23 +2,35 @@ import type { Map } from 'maplibre-gl';
 import type { IControl } from 'maplibre-gl';
 import MapMapViewerControlComponent from './MapMapViewerControl.svelte';
 
-// Type for options
-interface Options {
-  text: string;
+// Types for options
+export type MapMapViewerControlOptions = { [key: string]: ControlSpecification | ControlParentSpecification };
+export type CommonControlSpecification = {
+  display: string,
+  tags?: string[],
+  details?: string,
+  active?: boolean,
 };
-
-// Default options
-const defaultOptions: Options = {
-  text: 'Hello, world!',
+export type ControlSpecification = CommonControlSpecification & {
+  layerId: string,
+  opacityRange?: boolean,
+};
+export type TagList = { [key: string] : {
+  display: string,
+  url?: string,
+}};
+export type ControlParentSpecification = CommonControlSpecification & {
+  childrenTagList?: TagList,
+  children: MapMapViewerControlOptions,
+  visibility?: 'visible' | 'none',
 };
 
 export class MapMapViewerControl implements IControl {
-  private text: string;
+  private options: MapMapViewerControlOptions;
   private container!: HTMLDivElement;
   private map: Map | null;
 
-  constructor(options?: Options) {
-    this.text = options?.text || defaultOptions.text;
+  constructor(options: MapMapViewerControlOptions) {
+    this.options = options;
     this.map = null;
   };
 
@@ -26,11 +38,12 @@ export class MapMapViewerControl implements IControl {
     this.container = document.createElement('div');
     this.map = map;
 
+    // Add a cotrol component
     new MapMapViewerControlComponent({
       target: this.container,
       props: {
         map: this.map,
-        text: this.text,
+        options: this.options,
       }
     });
 

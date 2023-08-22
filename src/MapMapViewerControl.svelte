@@ -13,6 +13,11 @@
 
 <style lang="scss">
   #mapmapviewer-control {
-    padding: 1em 2em 1em 1em;
+    padding: 1em 2em;
+
+    >:global(.mmvc) {
+      border: none;
+      padding-left: 0;
+    }
   }
 </style>

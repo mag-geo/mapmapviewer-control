@@ -99,7 +99,9 @@
 
 <style lang="scss">
   .mmvc {
-    margin-left: 1em;
+    margin: 1em 0 1em 0em;
+    padding-left: 1.5em;
+    border-left: 3px solid #ccc;
 
     label {
       display: flex;

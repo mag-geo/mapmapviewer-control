@@ -10,6 +10,8 @@
   export let option: ControlSpecification | ControlParentSpecification;
   export let tagList: TagListSpecification;
 
+  let enabledTags: string[] = [];
+
   // レイヤーの表示状態
   // true: 表示, false: 非表示, TODO: undefined: 中間状態
   let visibility: boolean | undefined = (() => {
@@ -57,12 +59,18 @@
   {#if 'children' in option}
     <!-- タグ一覧 -->
     {#if option.childrenTagList}
-      <TagList tagList={option.childrenTagList} />
+      <TagList tagList={option.childrenTagList} bind:enabledTags/>
     {/if}
 
     <!-- 子 -->
-    <!-- TODO: filter by tags -->
-    {#each Object.entries(option.children) as [_, childOption]}
+    <!-- filter by tags -->
+    {#each Object.entries(option.children).filter(([_, v]) => {
+      if (v.tags !== undefined) {
+        return v.tags.filter((tag) => enabledTags.includes(tag)).length
+      }{
+        return true
+      }
+    }) as [_, childOption]}
       <svelte:self
         {map}
         option={childOption}

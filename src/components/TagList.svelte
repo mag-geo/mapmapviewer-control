@@ -3,11 +3,26 @@
   import Tag from "./Tag.svelte";
 
   export let tagList: TagList;
+  export let enabledTags: string[] = [];
+
+  // 表示するタグを選択するcheckboxの状態
+  let checked = Object.fromEntries(Object.keys(tagList).map((key) => [key, false]));
+
+  $: if (Object.values(checked).some(Boolean)) {
+    // チェックされているタグを表示
+    enabledTags = Object.entries(checked).filter(([_, v]) => v).map(([k, _]) => k);
+  } else {
+    // どのタグもチェックされていない時は全てのタグを表示
+    enabledTags = Object.keys(checked);
+  }
 </script>
 
 <div class="mmvc-taglist">
-  {#each Object.entries(tagList) as [_, tag]}
-    <Tag display={tag.display} />
+  {#each Object.entries(tagList) as [key, tag]}
+    <label>
+      <input type="checkbox" bind:checked={checked[key]} />
+      <Tag display={tag.display} />
+    </label>
   {/each}
 </div>
 

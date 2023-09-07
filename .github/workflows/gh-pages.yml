@@ -38,11 +38,11 @@ jobs:
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
-        if: ${{ github.ref == 'refs/heads/main' }}
+        if: ${{ github.ref == 'refs/heads/dev' }}
         with:
           path: './docs'
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
-        if: ${{ github.ref == 'refs/heads/main' }}
+        if: ${{ github.ref == 'refs/heads/dev' }}

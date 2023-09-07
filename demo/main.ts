@@ -80,23 +80,34 @@ map.on('load', () => {
         seamlessphoto: {display: '写真' },
       },
       children: {
-        std: {
-          layerId: 'gsi_std',
-          display: '国土地理院 標準地図',
-          details: '国土地理院 標準地図',
-          tags: ['gsi', 'std'],
-          opacityRange: true,
-        },
-        pale: {
-          layerId: 'gsi_pale',
-          display: '国土地理院 淡色地図',
-          details: '国土地理院 淡色地図',
-          tags: ['gsi', 'pale'],
-          opacityRange: true,
+        map: {
+          display: '地図',
+          childrenTagList: {
+            gsi: {display: '国土地理院', url: 'https://maps.gsi.go.jp/development/ichiran.html' },
+            std: {display: '標準' },
+            pale: {display: '淡色' },
+            seamlessphoto: {display: '写真' },
+          },
+          children: {
+            std: {
+              layerId: 'gsi_std',
+              display: '標準',
+              details: '国土地理院 標準地図',
+              tags: ['gsi', 'std'],
+              opacityRange: true,
+            },
+            pale: {
+              layerId: 'gsi_pale',
+              display: '淡色',
+              details: '国土地理院 淡色地図',
+              tags: ['gsi', 'pale'],
+              opacityRange: true,
+            },
+          },
         },
         seamlessphoto: {
           layerId: 'gsi_seamlessphoto',
-          display: '国土地理院 写真',
+          display: '写真',
           details: '国土地理院 写真',
           tags: ['gsi', 'seamlessphoto'],
           opacityRange: true,

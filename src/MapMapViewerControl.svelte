@@ -8,7 +8,7 @@
 </script>
 
 <div class="maplibregl-ctrl maplibregl-ctrl-group" id="mapmapviewer-control">
-  <Control map={map} options={options} />
+  <Control {map} {options} />
 </div>
 
 <style lang="scss">

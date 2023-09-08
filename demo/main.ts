@@ -72,6 +72,7 @@ map.on('load', () => {
 
   const options: MapMapViewerControlOptions = {
     gsi: {
+      type: 'group',
       display: '国土地理院',
       childrenTagList: {
         gsi: {display: '国土地理院', url: 'https://maps.gsi.go.jp/development/ichiran.html' },
@@ -80,6 +81,7 @@ map.on('load', () => {
       },
       children: {
         map: {
+          type: 'group',
           display: '地図',
           tags: ['gsi', 'map'],
           childrenTagList: {
@@ -88,6 +90,7 @@ map.on('load', () => {
           },
           children: {
             std: {
+              type: 'layer',
               layerId: 'gsi_std',
               display: '標準',
               details: '国土地理院 標準地図',
@@ -95,6 +98,7 @@ map.on('load', () => {
               opacityRange: true,
             },
             pale: {
+              type: 'layer',
               layerId: 'gsi_pale',
               display: '淡色',
               details: '国土地理院 淡色地図',
@@ -104,6 +108,7 @@ map.on('load', () => {
           },
         },
         seamlessphoto: {
+          type: 'layer',
           layerId: 'gsi_seamlessphoto',
           display: '写真',
           details: '国土地理院 写真',

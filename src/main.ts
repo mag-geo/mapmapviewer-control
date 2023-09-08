@@ -3,25 +3,29 @@ import type { IControl } from 'maplibre-gl';
 import MapMapViewerControlComponent from './MapMapViewerControl.svelte';
 
 // Types for options
-export type MapMapViewerControlOptions = { [key: string]: ControlSpecification | ControlParentSpecification };
-export type CommonControlSpecification = {
+export type MapMapViewerControlOptions = { [key: string]: ControlOption };
+export type ControlOption = LayerSpecification | GroupSpecification;
+export type CommonSpecification = {
   display: string,
   tags?: string[],
   details?: string,
   active?: boolean,
+  visibility?: 'visible' | 'none',
 };
-export type ControlSpecification = CommonControlSpecification & {
+export type LayerSpecification = CommonSpecification & {
+  type: 'layer',
   layerId: string,
+  opacity?: number,
   opacityRange?: boolean,
 };
 export type TagList = { [key: string] : {
   display: string,
   url?: string,
 }};
-export type ControlParentSpecification = CommonControlSpecification & {
+export type GroupSpecification = CommonSpecification & {
+  type: 'group',
   childrenTagList?: TagList,
   children: MapMapViewerControlOptions,
-  visibility?: 'visible' | 'none',
 };
 
 export class MapMapViewerControl implements IControl {

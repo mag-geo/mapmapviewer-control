@@ -1,13 +1,13 @@
 <script lang="ts">
   import type { Map } from "maplibre-gl";
-  import type { ControlParentSpecification, ControlSpecification, TagList as TagListSpecification } from "../main";
+  import type { ControlOption, TagList as TagListSpecification } from "../main";
   import Details from "./Details.svelte";
   import Tags from "./Tags.svelte";
   import Range from "./Range.svelte";
   import TagList from "./TagList.svelte";
 
   export let map: Map;
-  export let option: ControlSpecification | ControlParentSpecification;
+  export let option: ControlOption;
   export let tagList: TagListSpecification;
 
   let enabledTags: string[] = [];
@@ -15,7 +15,7 @@
   // レイヤーの表示状態
   // true: 表示, false: 非表示, TODO: undefined: 中間状態
   let visibility: boolean | undefined = (() => {
-    if ('layerId' in option) {
+    if (option.type === 'layer') {
       return map.getLayoutProperty(option.layerId, 'visibility') !== 'none';
     } else {
       return option.visibility !== 'none';
@@ -23,7 +23,7 @@
   })();
 
   // checkbox が変更されたときにレイヤーの表示/非表示を更新
-  $: if ('layerId' in option) {
+  $: if (option.type === 'layer') {
     map.setLayoutProperty(option.layerId, 'visibility', visibility ? 'visible' : 'none');
   }
 </script>
@@ -36,7 +36,7 @@
     <!-- 表示切り替えcheckbox -->
     <!-- 子を持たないときのみcheckboxを表示 -->
     <!-- TODO: 親レイヤーの表示切り替え -->
-    {#if 'layerId' in option}
+    {#if option.type === 'layer'}
       <input
         type="checkbox"
         bind:checked={visibility}
@@ -51,12 +51,12 @@
   <Tags tags={option.tags} {tagList} />
 
   <!-- 透過度 -->
-  {#if 'layerId' in option && option.opacityRange}
+  {#if option.type === 'layer' && option.opacityRange}
     <Range {map} layerId={option.layerId} />
   {/if}
 
   <!-- 子レイヤー -->
-  {#if 'children' in option}
+  {#if option.type === 'group'}
     <!-- タグ一覧 -->
     {#if option.childrenTagList}
       <TagList tagList={option.childrenTagList} bind:enabledTags/>
@@ -67,7 +67,7 @@
     {#each Object.entries(option.children).filter(([_, v]) => {
       if (v.tags !== undefined) {
         return v.tags.filter((tag) => enabledTags.includes(tag)).length
-      }{
+      } else {
         return true
       }
     }) as [_, childOption]}

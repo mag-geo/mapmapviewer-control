@@ -6,15 +6,14 @@
   export let enabledTags: string[] = [];
 
   // 表示するタグを選択するcheckboxの状態
-  let checked = Object.fromEntries(Object.keys(tagList).map((key) => [key, false]));
+  let checked = Object.fromEntries(
+    Object.keys(tagList).map((key) => [key, false])
+  );
 
-  $: if (Object.values(checked).some(Boolean)) {
-    // チェックされているタグを表示
-    enabledTags = Object.entries(checked).filter(([_, v]) => v).map(([k, _]) => k);
-  } else {
-    // どのタグもチェックされていない時は全てのタグを表示
-    enabledTags = Object.keys(checked);
-  }
+  // チェックされているタグを表示
+  $: enabledTags = Object.entries(checked)
+    .filter(([_, v]) => v)
+    .map(([k, _]) => k);
 </script>
 
 <div class="mmvc-taglist">

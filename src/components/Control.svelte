@@ -15,5 +15,4 @@
 {/each}
 
 <style lang="scss">
-
 </style>

@@ -11,7 +11,7 @@
 
 <style lang="scss">
   span::before {
-    content: '#';
+    content: "#";
     padding-right: 0.1em;
   }
 </style>

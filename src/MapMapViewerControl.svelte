@@ -15,7 +15,7 @@
   #mapmapviewer-control {
     padding: 1em 2em;
 
-    >:global(.mmvc) {
+    > :global(.mmvc) {
       border: none;
       padding-left: 0;
     }

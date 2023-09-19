@@ -33,7 +33,7 @@ map.on('load', () => {
 
 This project is based on [the MapLibre GL JS documentation](https://maplibre.org/maplibre-gl-js/docs/) and [the Svelte documentation](https://svelte.dev/docs/).
 
-It is based on [xiupos/maplibre-gl-sample-svelte-control](xiupos/maplibre-gl-sample-svelte-control).
+It is based on [xiupos/maplibre-gl-sample-svelte-control](https://github.com/xiupos/maplibre-gl-sample-svelte-control).
 
 ## License
 

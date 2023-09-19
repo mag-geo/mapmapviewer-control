@@ -16,7 +16,13 @@
       "import": "./dist/mapmapviewer-control.js",
       "require": "./dist/mapmapviewer-control.cjs"
     },
-    "./dist/style.css": "./dist/style.css"
+    "./MapMapViewerControl.svelte": {
+      "svelte": {
+        "default": "./dist/svelte/MapMapViewerControl.svelte",
+        "types": "./dist/svelte/MapMapViewerControl.svelte.d.ts"
+      }
+    },
+    "./style.css": "./dist/style.css"
   },
   "type": "module",
   "scripts": {
@@ -26,10 +32,11 @@
     "dev:lib": "vite --config vite.lib.config.ts",
     "build": "pnpm build:lib && pnpm build:demo",
     "build:demo": "svelte-check && vite build",
-    "build:lib": "svelte-check --tsconfig ./tsconfig.lib.json && vite build --config vite.lib.config.ts",
+    "build:lib": "svelte-check --tsconfig ./tsconfig.lib.json && vite build --config vite.lib.config.ts && svelte-package -i src -o dist/svelte",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@sveltejs/package": "^2.2.2",
     "@sveltejs/vite-plugin-svelte": "^2.4.5",
     "@tsconfig/svelte": "^5.0.0",
     "sass": "^1.66.1",

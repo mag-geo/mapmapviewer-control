@@ -17,7 +17,7 @@ See [demo/main.ts](./demo/main.ts).
 ```js
 // Import the plugin
 import { MapMapViewerControl } from 'mapmapviewer-control';
-import 'mapmapviewer-control/dist/style.css';
+import 'mapmapviewer-control/style.css';
 
 // const map = new Map({ ... });
 // const options = { ... };

@@ -8,6 +8,7 @@ export default defineConfig({
     svelte({ configFile: 'svelte.config.js' }),
     dts({
       tsconfigPath: 'tsconfig.lib.json',
+      rollupTypes: true,
     }),
   ],
   build: {

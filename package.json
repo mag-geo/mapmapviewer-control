@@ -17,10 +17,9 @@
       "require": "./dist/mapmapviewer-control.cjs"
     },
     "./component": {
-      "svelte": {
-        "default": "./dist/svelte/main.js",
-        "types": "./dist/svelte/main.d.ts"
-      }
+      "types": "./dist/svelte/main.d.ts",
+      "default": "./dist/svelte/main.js",
+      "svelte": "./dist/svelte/main.js"
     },
     "./style.css": "./dist/style.css"
   },

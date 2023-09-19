@@ -12,6 +12,7 @@
   "types": "./dist/main.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/main.d.ts",
       "import": "./dist/mapmapviewer-control.js",
       "require": "./dist/mapmapviewer-control.cjs"
     },

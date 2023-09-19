@@ -16,10 +16,10 @@
       "import": "./dist/mapmapviewer-control.js",
       "require": "./dist/mapmapviewer-control.cjs"
     },
-    "./MapMapViewerControl.svelte": {
+    "./component": {
       "svelte": {
-        "default": "./dist/svelte/MapMapViewerControl.svelte",
-        "types": "./dist/svelte/MapMapViewerControl.svelte.d.ts"
+        "default": "./dist/svelte/main.js",
+        "types": "./dist/svelte/main.d.ts"
       }
     },
     "./style.css": "./dist/style.css"

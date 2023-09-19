@@ -10,7 +10,7 @@ export type ControlOption = LayerSpecification | GroupSpecification;
 export type LayerSpecification = CommonSpecification & {
   type: 'layer',
   layerId: string,
-  // opacity?: number, // 0~100
+  opacity?: number, // 0~100
   opacityRange?: boolean,
 };
 export type GroupSpecification = CommonSpecification & {
@@ -27,7 +27,7 @@ export type CommonSpecification = {
   tags?: string[],
   details?: string,
   active?: boolean,
-  // visibility?: Visibility,
+  visibility?: Visibility,
 };
 export type Visibility = 'visible' | 'none' | 'indeterminate';
 

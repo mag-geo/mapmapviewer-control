@@ -5,10 +5,15 @@
   export let layerId: string;
 
   // レイヤーの透過度 0~100
-  let opacity: number = (() => {
+  export let opacity: number | undefined = undefined;
+
+  // 初期化
+  if (opacity === undefined) {
     const value = map.getPaintProperty(layerId, "raster-opacity");
-    return typeof value === "number" ? value * 100 : 100;
-  })();
+    opacity = typeof value === "number" ? value * 100 : 100;
+  } else {
+    map.setPaintProperty(layerId, "raster-opacity", opacity / 100);
+  }
 
   // range が変更されたときにレイヤーの透過度を更新
   $: if (layerId && opacity !== undefined) {

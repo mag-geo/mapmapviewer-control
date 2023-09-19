@@ -24,7 +24,7 @@
     <!-- 子を持たないときのみcheckboxを表示 -->
     <!-- TODO: 親レイヤーの表示切り替え -->
     {#if option.type === "layer"}
-      <Checkbox {map} layerId={option.layerId} />
+      <Checkbox {map} layerId={option.layerId} bind:visibility={option.visibility} />
     {/if}
   </label>
 
@@ -36,7 +36,7 @@
 
   <!-- 透過度 -->
   {#if option.type === "layer" && option.opacityRange}
-    <Range {map} layerId={option.layerId} />
+    <Range {map} layerId={option.layerId} bind:opacity={option.opacity} />
   {/if}
 
   <!-- 子レイヤー -->
@@ -47,13 +47,11 @@
     {/if}
 
     <!-- 子 -->
-    <!-- filter by tags -->
-    {#each Object.entries(option.children).filter( ([_, v]) => enabledTags.every((tag) => v.tags === undefined || v.tags.includes(tag)) ) as [_, childOption]}
-      <svelte:self
-        {map}
-        option={childOption}
-        tagList={option.childrenTagList}
-      />
+    {#each Object.keys(option.children) as key}
+      <!-- filter by enabledTags -->
+      {#if enabledTags.every((tag) => option.type === "group" && (option.children[key].tags === undefined || option.children[key].tags?.includes(tag)))}
+        <svelte:self {map} bind:option={option.children[key]} tagList={option.childrenTagList} />
+      {/if}
     {/each}
   {/if}
 </div>

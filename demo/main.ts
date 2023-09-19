@@ -96,6 +96,7 @@ map.on('load', () => {
               details: '国土地理院 標準地図',
               tags: ['std'],
               opacityRange: true,
+              opacity: 30,
             },
             pale: {
               type: 'layer',

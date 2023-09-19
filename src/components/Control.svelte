@@ -8,9 +8,9 @@
   export let tagList: TagList = {};
 </script>
 
-{#each Object.entries(options) as [_, option]}
+{#each Object.keys(options) as key}
   <div class="mmvc">
-    <Node {map} {option} {tagList} />
+    <Node {map} bind:option={options[key]} {tagList} />
   </div>
 {/each}
 

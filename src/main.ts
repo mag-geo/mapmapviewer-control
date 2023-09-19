@@ -1,5 +1,4 @@
-import type { Map } from 'maplibre-gl';
-import type { IControl } from 'maplibre-gl';
+import type { Map, IControl } from 'maplibre-gl';
 import MapMapViewerControlComponent from './MapMapViewerControl.svelte';
 
 export { MapMapViewerControlComponent };

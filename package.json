@@ -7,7 +7,7 @@
   "files": [
     "dist"
   ],
-  "module": "./dist/mapmapviewer-control.js",
+  "main": "./dist/mapmapviewer-control.js",
   "types": "./src/vite-env.d.ts",
   "type": "module",
   "scripts": {

@@ -12,7 +12,7 @@ pnpm add mag-geo/mapmapviewer-control
 
 ## Usege
 
-See [demo/main.ts](./blob/dev/demo/main.ts).
+See [demo/main.ts](./demo/main.ts).
 
 ```js
 // Import the plugin

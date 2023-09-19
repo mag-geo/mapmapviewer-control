@@ -7,11 +7,16 @@
   "files": [
     "dist"
   ],
-  "exports": {
-    "import": "./dist/mapmapviewer-control.js",
-    "require": "./dist/mapmapviewer-control.cjs"
-  },
+  "main": "./dist/mapmapviewer-control.cjs",
+  "module": "./dist/mapmapviewer-control.js",
   "types": "./src/vite-env.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/mapmapviewer-control.js",
+      "require": "./dist/mapmapviewer-control.cjs"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
   "type": "module",
   "scripts": {
     "prepare": "pnpm build:lib",

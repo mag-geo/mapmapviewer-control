@@ -5,7 +5,7 @@
   export let layerId: string;
 
   // レイヤーの透過度 0~100
-  let opacity: number | undefined = (() => {
+  let opacity: number = (() => {
     const value = map.getPaintProperty(layerId, "raster-opacity");
     return typeof value === "number" ? value * 100 : 100;
   })();

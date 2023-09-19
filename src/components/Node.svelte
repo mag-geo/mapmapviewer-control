@@ -5,34 +5,17 @@
   import Tags from "./Tags.svelte";
   import Range from "./Range.svelte";
   import TagList from "./TagList.svelte";
+  import Checkbox from "./Checkbox.svelte";
 
   export let map: Map;
   export let option: ControlOption;
   export let tagList: TagListSpecification;
 
   let enabledTags: string[] = [];
-
-  // レイヤーの表示状態
-  // true: 表示, false: 非表示, TODO: undefined: 中間状態
-  let visibility: boolean | undefined = (() => {
-    if (option.type === "layer") {
-      return map.getLayoutProperty(option.layerId, "visibility") !== "none";
-    } else {
-      return option.visibility !== "none";
-    }
-  })();
-
-  // checkbox が変更されたときにレイヤーの表示/非表示を更新
-  $: if (option.type === "layer") {
-    map.setLayoutProperty(
-      option.layerId,
-      "visibility",
-      visibility ? "visible" : "none"
-    );
-  }
 </script>
 
 <div class="mmvc-node">
+  <!-- svelte-ignore a11y-label-has-associated-control -->
   <label>
     <!-- タイトル -->
     <h3>{option.display}</h3>
@@ -41,7 +24,7 @@
     <!-- 子を持たないときのみcheckboxを表示 -->
     <!-- TODO: 親レイヤーの表示切り替え -->
     {#if option.type === "layer"}
-      <input type="checkbox" bind:checked={visibility} />
+      <Checkbox {map} layerId={option.layerId} />
     {/if}
   </label>
 

@@ -17,8 +17,9 @@ export default defineConfig({
     sourcemap: true,
 
     lib: {
+      name: "mmvc",
       entry: "src/main.ts",
-      formats: ["es", "cjs"],
+      formats: ["es", "cjs", "umd"],
     },
   },
 });

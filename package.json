@@ -7,7 +7,7 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/mapmapviewer-control.cjs",
+  "main": "./dist/mapmapviewer-control.umd.cjs",
   "module": "./dist/mapmapviewer-control.js",
   "types": "./dist/main.d.ts",
   "exports": {

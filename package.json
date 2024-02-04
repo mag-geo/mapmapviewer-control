@@ -27,11 +27,11 @@
   "scripts": {
     "prepare": "pnpm build:lib",
     "dev": "pnpm dev:demo",
-    "dev:demo": "vite",
-    "dev:lib": "vite --config vite.lib.config.ts",
+    "dev:demo": "vite --config vite.demo.config.ts",
+    "dev:lib": "vite",
     "build": "pnpm build:lib && pnpm build:demo",
-    "build:demo": "svelte-check && vite build",
-    "build:lib": "svelte-check --tsconfig ./tsconfig.lib.json && vite build --config vite.lib.config.ts && svelte-package -i src -o dist/svelte",
+    "build:demo": "svelte-check --tsconfig ./tsconfig.demo.json && vite build --config vite.demo.config.ts ",
+    "build:lib": "svelte-check && vite build && svelte-package -i src -o dist/svelte",
     "preview": "vite preview"
   },
   "devDependencies": {
@@ -39,7 +39,6 @@
     "@sveltejs/vite-plugin-svelte": "^2.4.5",
     "@tsconfig/svelte": "^5.0.0",
     "sass": "^1.66.1",
-    "svelte": "^4.2.0",
     "svelte-check": "^3.5.0",
     "tslib": "^2.6.2",
     "typescript": "^5.0.2",
@@ -47,6 +46,7 @@
     "vite-plugin-dts": "^3.5.3"
   },
   "dependencies": {
+    "svelte": "^4.2.0",
     "maplibre-gl": "^3.3.0"
   }
 }

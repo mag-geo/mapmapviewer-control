@@ -13,6 +13,3 @@
     <Node {map} bind:option={options[key]} {tagList} />
   </div>
 {/each}
-
-<style lang="scss">
-</style>

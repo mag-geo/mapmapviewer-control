@@ -56,7 +56,7 @@ map.on('load', () => {
     source: 'gsi_pale',
   });
 
-  // 国土地理院 淡色地図
+  // 国土地理院 航空写真
   map.addSource('gsi_seamlessphoto', {
     type: 'raster',
     tiles: ['https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg'],

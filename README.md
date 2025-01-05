@@ -1,40 +1,38 @@
-# mapmapviewer-control
+# sv
 
-This is a control for map visiblity, opacity, and filtering by tags to MapLibre GL JS. [demo](https://mag-geo.github.io/mapmapviewer-control/)
+Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 
-![Screenshot](img/screenshot.png)
+## Creating a project
 
-## Installation
+If you're seeing this, you've probably already done this step. Congrats!
 
 ```bash
-pnpm add mag-geo/mapmapviewer-control
+# create a new project in the current directory
+npx sv create
+
+# create a new project in my-app
+npx sv create my-app
 ```
 
-## Usege
+## Developing
 
-See [demo/main.ts](./demo/main.ts).
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-```js
-// Import the plugin
-import { MapMapViewerControl } from 'mapmapviewer-control';
-import 'mapmapviewer-control/style.css';
+```bash
+npm run dev
 
-// const map = new Map({ ... });
-// const options = { ... };
-
-map.on('load', () => {
-  // Add sample control
-  const Sample = new MapMapViewerControl(options);
-  map.addControl(Sample);
-});
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
 ```
 
-## Credits
+## Building
 
-This project is based on [the MapLibre GL JS documentation](https://maplibre.org/maplibre-gl-js/docs/) and [the Svelte documentation](https://svelte.dev/docs/).
+To create a production version of your app:
 
-It is based on [xiupos/maplibre-gl-sample-svelte-control](https://github.com/xiupos/maplibre-gl-sample-svelte-control).
+```bash
+npm run build
+```
 
-## License
+You can preview the production build with `npm run preview`.
 
-This project is licensed under the MIT License.
+> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.

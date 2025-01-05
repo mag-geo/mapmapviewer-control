@@ -1,5 +1,5 @@
 import mapliblegl from "maplibre-gl";
-import type { LayerStates } from "./types";
+import type { LayerList, LayerStates } from "./types";
 
 /**
  * `layerId` から表示性(表示の有無)を取得
@@ -55,40 +55,6 @@ export const toggleLayerVisibility = (
     : setLayerVisibility(map, layerStates, layerId, "none");
 
 /**
- * `map` の状態から `layerList` を更新
- * @param layerStates レイヤーの状態を格納した配列
- */
-export const updateLayersFromMap = (
-  map: mapliblegl.Map,
-  layerStates: LayerStates
-) => {
-  /** 地図に追加されてるレイヤーの一覧 */
-  const layerIds = map.getStyle().layers.map((l) => l.id);
-
-  for (const layer of layerStates) {
-    if (layerIds.includes(layer.layerId)) {
-      // 表示性を更新
-      setLayerVisibility(
-        map,
-        layerStates,
-        layer.layerId,
-        map.getLayoutProperty(layer.layerId, "visibility")
-      );
-
-      // 透過度を更新
-      /** 地図の状態から取得した透過度 */
-      const opacity = map.getPaintProperty(layer.layerId, "raster-opacity");
-      setLayerOpacity(
-        map,
-        layerStates,
-        layer.layerId,
-        opacity === undefined ? 100 : Number(opacity) * 100
-      );
-    }
-  }
-};
-
-/**
  * `layerId` から透過度を取得
  * @param layerStates レイヤーの状態を格納した配列
  * @param layerId 透過度を変更するレイヤーの layerId
@@ -139,3 +105,71 @@ export const setLayerOpacity = (
         opacity === undefined ? 1 : opacity / 100
       );
     });
+
+/**
+ * `map` の状態から `layerList` を更新
+ * @param layerStates レイヤーの状態を格納した配列
+ */
+export const updateLayersFromMap = (
+  map: mapliblegl.Map,
+  layerStates: LayerStates
+) => {
+  /** 地図に追加されてるレイヤーの一覧 */
+  const layerIds = map.getStyle().layers.map((l) => l.id);
+
+  for (const layer of layerStates) {
+    if (layerIds.includes(layer.layerId)) {
+      // 表示性を更新
+      setLayerVisibility(
+        map,
+        layerStates,
+        layer.layerId,
+        map.getLayoutProperty(layer.layerId, "visibility")
+      );
+
+      // 透過度を更新
+      /** 地図の状態から取得した透過度 */
+      const opacity = map.getPaintProperty(layer.layerId, "raster-opacity");
+      setLayerOpacity(
+        map,
+        layerStates,
+        layer.layerId,
+        opacity === undefined ? 100 : Number(opacity) * 100
+      );
+    }
+  }
+};
+
+/**
+ * `map` の状態から `layerList` を更新
+ * @param layerStates レイヤーの状態を格納した配列
+ */
+export const getLayerStatesFromMap = (
+  map: mapliblegl.Map,
+  layerList: LayerList
+) => {
+  /** 地図に追加されてるレイヤーの一覧 */
+  const layerIds = map.getStyle().layers.map((l) => l.id);
+
+  for (const layer of layerStates) {
+    if (layerIds.includes(layer.layerId)) {
+      // 表示性を更新
+      setLayerVisibility(
+        map,
+        layerStates,
+        layer.layerId,
+        map.getLayoutProperty(layer.layerId, "visibility")
+      );
+
+      // 透過度を更新
+      /** 地図の状態から取得した透過度 */
+      const opacity = map.getPaintProperty(layer.layerId, "raster-opacity");
+      setLayerOpacity(
+        map,
+        layerStates,
+        layer.layerId,
+        opacity === undefined ? 100 : Number(opacity) * 100
+      );
+    }
+  }
+};

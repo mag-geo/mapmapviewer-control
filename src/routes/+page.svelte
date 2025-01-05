@@ -60,7 +60,7 @@
   ];
 
   /** 右パネルの開閉フラグ */
-  let rightPanel = $state(false);
+  let rightPanel = $state(true);
 </script>
 
 <div class="flex">
@@ -144,19 +144,15 @@
         onclick={() => (rightPanel = !rightPanel)}
         class="!flex items-center justify-center text-gray-900"
       >
-        {#if rightPanel}
-          <span class="material-icons-outlined !text-xl text-blue-600"
-            >format_list_bulleted</span
-          >
-        {:else}
-          <span class="material-icons-outlined !text-xl"
-            >format_list_bulleted</span
-          >
-        {/if}
+        <span
+          class={`material-icons-outlined !text-xl ${rightPanel ? "text-blue-600" : ""}`}
+        >
+          format_list_bulleted
+        </span>
       </button>
     </CustomControl>
 
-    <!-- レイヤーの表示/非表示ボタン -->
+    <!-- OpenRailwayMap レイヤーの表示/非表示ボタン -->
     <CustomControl position="top-right">
       <button
         onclick={() =>
@@ -165,13 +161,7 @@
             : map?.setLayoutProperty("openrailwaymap", "visibility", "none")}
         class="!flex items-center justify-center text-gray-900"
       >
-        {#if map?.getLayoutProperty("openrailwaymap", "visibility") === "none"}
-          <span class="material-icons-outlined !text-xl">train</span>
-        {:else}
-          <span class="material-icons-outlined !text-xl text-blue-600"
-            >train</span
-          >
-        {/if}
+        <span class="material-icons-outlined !text-xl">train</span>
       </button>
     </CustomControl>
   </MapLibre>

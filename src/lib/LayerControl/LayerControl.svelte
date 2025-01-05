@@ -28,7 +28,7 @@
   );
 
   /** map が読み込まれているかのフラグ */
-  let loaded = $state(Boolean(map.getStyle()?.layers) || map.loaded());
+  let loaded = $state(Boolean(map.getStyle()) || map.loaded());
 
   /** 地図が読み込まれたときに実行される関数 */
   const loadFunc = () => {

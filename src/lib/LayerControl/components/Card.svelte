@@ -38,6 +38,7 @@
     rounded-xl
   `}
 >
+  <!-- レイヤー名 -->
   <button
     class="flex items-center gap-1 hover:opacity-70"
     onclick={() => toggleLayerVisibility(map, layerStates, layer.layerId)}
@@ -48,7 +49,7 @@
 
   <!-- タグの一覧 -->
   {#if layer.tags && intersectionOf( tagStates.map((tag) => tag.tagId), layer.tags ).length}
-    <div class="flex flex-wrap items-center gap-1 pl-2">
+    <div class="flex flex-wrap items-center gap-1 pl-1">
       <span class="material-icons-outlined select-none !text-lg">sell</span>
       {#each layer.tags as tagId}
         <span class="px-2 py-1 bg-white rounded-full border text-xs">
@@ -60,12 +61,12 @@
 
   <!-- 透過度レンジスライド -->
   {#if layer.opacityControl == true}
-    <div>
-      <Range
-        value={layer.opacity}
-        update={(val) =>
-          setLayerOpacity(map, layerStates, layer.layerId, val)}
-      />
-    </div>
+    <Range
+      bind:value={layer.opacity}
+      onclick={() => {
+        setLayerOpacity(map, layerStates, layer.layerId, layer.opacity);
+        console.log("Now!");
+      }}
+    />
   {/if}
 </div>

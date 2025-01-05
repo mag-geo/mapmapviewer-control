@@ -63,10 +63,8 @@
   {#if layer.opacityControl == true}
     <Range
       bind:value={layer.opacity}
-      onclick={() => {
-        setLayerOpacity(map, layerStates, layer.layerId, layer.opacity);
-        console.log("Now!");
-      }}
+      onclick={() =>
+        setLayerOpacity(map, layerStates, layer.layerId, layer.opacity)}
     />
   {/if}
 </div>

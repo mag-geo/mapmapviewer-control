@@ -1,52 +1,50 @@
 {
-  "name": "mapmapviewer-control",
-  "version": "0.1.0",
-  "license": "MIT",
-  "homepage": "https://mag-geo.github.io/mapmapviewer-control/",
-  "repository": "https://github.com/mag-geo/mapmapviewer-control",
-  "files": [
-    "dist"
-  ],
-  "main": "./dist/mapmapviewer-control.umd.cjs",
-  "module": "./dist/mapmapviewer-control.js",
-  "types": "./dist/main.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/main.d.ts",
-      "import": "./dist/mapmapviewer-control.js",
-      "require": "./dist/mapmapviewer-control.cjs"
-    },
-    "./component": {
-      "types": "./dist/svelte/main.d.ts",
-      "default": "./dist/svelte/main.js",
-      "svelte": "./dist/svelte/main.js"
-    },
-    "./style.css": "./dist/style.css"
-  },
-  "type": "module",
-  "scripts": {
-    "prepare": "pnpm build:lib",
-    "dev": "pnpm dev:demo",
-    "dev:demo": "vite --config vite.demo.config.ts",
-    "dev:lib": "vite",
-    "build": "pnpm build:lib && pnpm build:demo",
-    "build:demo": "svelte-check --tsconfig ./tsconfig.demo.json && vite build --config vite.demo.config.ts ",
-    "build:lib": "svelte-check && vite build && svelte-package -i src -o dist/svelte",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "@sveltejs/package": "^2.2.2",
-    "@sveltejs/vite-plugin-svelte": "^2.4.5",
-    "@tsconfig/svelte": "^5.0.0",
-    "sass": "^1.66.1",
-    "svelte-check": "^3.5.0",
-    "tslib": "^2.6.2",
-    "typescript": "^5.0.2",
-    "vite": "^4.4.5",
-    "vite-plugin-dts": "^3.5.3"
-  },
-  "dependencies": {
-    "svelte": "^4.2.0",
-    "maplibre-gl": "^3.3.0"
-  }
+	"name": "maplibre-gl-layer-manager",
+	"version": "0.0.1",
+	"license": "MIT",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build && npm run prepack",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"prepack": "svelte-kit sync && svelte-package && publint",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+	},
+	"files": [
+		"dist",
+		"!dist/**/*.test.*",
+		"!dist/**/*.spec.*"
+	],
+	"sideEffects": [
+		"**/*.css"
+	],
+	"svelte": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js"
+		}
+	},
+	"peerDependencies": {
+		"svelte": "^5.0.0"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^4.0.0",
+		"@sveltejs/kit": "^2.16.0",
+		"@sveltejs/package": "^2.0.0",
+		"@sveltejs/vite-plugin-svelte": "^5.0.0",
+		"@tailwindcss/vite": "^4.0.0",
+		"maplibre-gl": "^5.1.0",
+		"material-icons": "^1.13.13",
+		"publint": "^0.3.2",
+		"svelte": "^5.0.0",
+		"svelte-check": "^4.0.0",
+		"svelte-maplibre-gl": "^0.1.4",
+		"tailwindcss": "^4.0.0",
+		"typescript": "^5.0.0",
+		"vite": "^6.0.0"
+	}
 }

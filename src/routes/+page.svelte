@@ -9,14 +9,14 @@
   import maplibregl from "maplibre-gl";
   import "material-icons/iconfont/material-icons.css";
   import {
-    LayerControl,
+    LayerManager,
     type LayerList,
     type TagList,
-  } from "$lib/LayerControl";
+  } from "$lib/LayerManager";
 
   let map: maplibregl.Map | undefined = $state.raw();
 
-  /** LayerControl 用のレイヤーの設定 */
+  /** LayerManager 用のレイヤーの設定 */
   const layerList: LayerList = [
     {
       layerId: "gsi_std",
@@ -52,7 +52,7 @@
     },
   ];
 
-  /** LayerControl 用のタグの設定 */
+  /** LayerManager 用のタグの設定 */
   const tagList: TagList = [
     { tagId: "map", display: "地図" },
     { tagId: "gsi", display: "国土地理院" },
@@ -180,7 +180,7 @@
       <!-- レイヤーコントロール -->
       {#if map}
         <main class="p-3">
-          <LayerControl bind:map {layerList} {tagList} />
+          <LayerManager bind:map {layerList} {tagList} />
         </main>
       {/if}
     </nav>

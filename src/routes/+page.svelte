@@ -8,11 +8,7 @@
   } from "svelte-maplibre-gl";
   import maplibregl from "maplibre-gl";
   import "material-icons/iconfont/material-icons.css";
-  import {
-    LayerManager,
-    type LayerList,
-    type TagList,
-  } from "$lib/LayerManager";
+  import { LayerManager, type LayerList, type TagList } from "$lib";
 
   let map: maplibregl.Map | undefined = $state.raw();
 

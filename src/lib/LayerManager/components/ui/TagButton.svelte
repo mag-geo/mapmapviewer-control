@@ -17,7 +17,7 @@
     items-center
     gap-1
     h-8
-    ${enabled ? "bg-blue-200 hover:bg-blue-300" : "bg-slate-100 hover:bg-slate-200"}
+    ${enabled ? "bg-blue-200 hover:bg-blue-300" : "bg-slate-200 hover:bg-slate-300"}
     rounded-md
     px-2
     text-sm

@@ -1,5 +1,5 @@
 {
-	"name": "maplibre-gl-layer-manager",
+	"name": "@mag-geo/maplibre-gl-layer-manager",
 	"version": "0.0.1",
 	"license": "MIT",
 	"scripts": {

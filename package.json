@@ -2,6 +2,10 @@
 	"name": "@mag-geo/maplibre-gl-layer-manager",
 	"version": "0.0.1",
 	"license": "MIT",
+	"repository": {
+    "type": "git",
+    "url": "https://github.com/mag-geo/maplibre-gl-layer-manager"
+  },
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run prepack",

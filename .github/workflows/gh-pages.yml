@@ -40,7 +40,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         if: ${{ github.ref == 'refs/heads/dev' }}
         with:
-          path: './docs'
+          path: './build'
 
       - name: Deploy to GitHub Pages
         id: deployment
